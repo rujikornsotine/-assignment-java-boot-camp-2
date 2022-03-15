@@ -1,1 +1,1 @@
-# -assignment-java-boot-camp-2
+# assignment-java-boot-camp-2
