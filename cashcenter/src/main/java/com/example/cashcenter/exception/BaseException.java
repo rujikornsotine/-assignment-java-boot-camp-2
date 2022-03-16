@@ -1,0 +1,11 @@
+package com.example.cashcenter.exception;
+
+
+public abstract class BaseException extends Exception {
+    public String errorcode;
+    public BaseException(String message,String errorcode){
+        super(message);
+        this.errorcode  = errorcode;
+    }
+
+}
