@@ -1,6 +1,7 @@
 package com.example.cashcenter.location;
 
 import com.example.cashcenter.location.dto.LocationResponse;
+import com.example.cashcenter.location.exception.LocationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,10 @@ public class LocationController {
     private LocationService service;
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<LocationResponse> getlocation(@PathVariable String id){
+    public ResponseEntity<LocationResponse> getlocation(@PathVariable String id) throws LocationException {
         Location location = service.getlocationByIoTID(id);
         LocationResponse locationResponse = new  LocationResponse(location.getLongitude(),location.getLatitude());
-        return new ResponseEntity<LocationResponse>(locationResponse, HttpStatus.OK);
+        return new ResponseEntity<>(locationResponse, HttpStatus.OK);
     }
 
 

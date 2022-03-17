@@ -4,8 +4,10 @@ import com.example.cashcenter.exception.BaseException;
 import com.example.cashcenter.exception.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+@ControllerAdvice
 public class ErrorAdviser {
     public ErrorAdviser() {
     }

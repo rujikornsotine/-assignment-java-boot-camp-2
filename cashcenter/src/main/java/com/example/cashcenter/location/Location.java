@@ -1,9 +1,6 @@
 package com.example.cashcenter.location;
 
 
-import javax.persistence.Entity;
-
-
 public class Location {
     private String id;
     private String longitude;
