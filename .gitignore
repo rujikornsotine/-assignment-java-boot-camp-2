@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+/logs/for-logstash.log
+/logs/application-outbound.log
+/logs/application.log
+logs/
