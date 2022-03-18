@@ -7,18 +7,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class LocationService {
-
-    @Value("${location.url}")
-    private String url;
 
     private static final Logger log
             = LoggerFactory.getLogger(LocationService.class);
     @Autowired
     LocationGateway gateway;
+    @Value("${location.url}")
+    private String url;
 
     public Location getlocationByIoTID(String IoTID) throws LocationException {
 
@@ -28,7 +26,7 @@ public class LocationService {
             location = gateway.GetLocation(url);
 
         } catch (Exception ex) {
-            log.error("RestTemplate error : " +  ex.getMessage(), ex);
+            log.error("RestTemplate error : " + ex.getMessage(), ex);
             throw LocationException.ohterException("RestTemplate error : " + ex.getMessage(), "99999");
         }
 
