@@ -24,7 +24,7 @@ public class LocationGateway {
         }
         catch (Exception ex){
             log.error("LocationGateway GetLocation error.",ex);
-            throw new  Exception("LocationGateway GetLocation error.",ex);
+            throw new  Exception("LocationGateway GetLocation error."+ex.getMessage(),ex);
         }
         log.info("GetLocation Return [ Latitude :" + location.getLatitude()+  ",Longitude : "  +location.getLongitude()+"]");
         log.info("GetLocation End !!!!!" );

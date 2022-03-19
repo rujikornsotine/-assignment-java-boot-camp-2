@@ -6,6 +6,8 @@ import com.example.cashcenter.cashbox.enums.CashBoxStatus;
 import java.time.LocalDateTime;
 
 public class CashBoxResponse {
+    public CashBoxResponse() {
+    }
 
     private int id;
     private String deliveryID;

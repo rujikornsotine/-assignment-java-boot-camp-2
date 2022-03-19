@@ -18,6 +18,17 @@ public class LocationService {
     @Value("${location.url}")
     private String url;
 
+    public void setGateway(LocationGateway gateway) {
+        this.gateway = gateway;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public LocationService() {
+    }
+
     public Location getlocationByIoTID(String IoTID) throws LocationException {
 
         url = url + IoTID;
@@ -26,8 +37,8 @@ public class LocationService {
             location = gateway.GetLocation(url);
 
         } catch (Exception ex) {
-            log.error("RestTemplate error : " + ex.getMessage(), ex);
-            throw LocationException.ohterException("RestTemplate error : " + ex.getMessage(), "99999");
+            log.error("GetLocation error : " + ex.getMessage(), ex);
+            throw LocationException.ohterException("GetLocation error : " + ex.getMessage(), "99999");
         }
 
         return location;

@@ -24,6 +24,14 @@ public class CashBoxService {
     @Autowired
     QRGateway qrGateway;
 
+    public void setCashBoxRepository(CashBoxRepository cashBoxRepository) {
+        this.cashBoxRepository = cashBoxRepository;
+    }
+
+    public void setQrGateway(QRGateway qrGateway) {
+        this.qrGateway = qrGateway;
+    }
+
     public CashBox getCashBoxByID(int id) throws CashBoxException {
         Optional<CashBox> cashBox;
 
@@ -160,22 +168,22 @@ public class CashBoxService {
 
         try {
 
-            QRGenerateRespones qr = qrGateway.generateQRCode("");
+             cashBox = cashBoxRepository.save(cashBox);
+
+        } catch (Exception ex) {
+            log.error("addCastBox Repository error : " + ex.getMessage(), ex);
+            throw CashBoxException.ohterException("addCastBox Repository error : " + ex.getMessage(), "99999");
+        }
+
+        try {
+
+            QRGenerateRespones qr = qrGateway.generateQRCode(cashBox.getId() + ":" + cashBox.getAmount());
             cashBox.setQrCode(qr.getQRCode());
             cashBox.setQrCodeID(qr.getQrID());
 
         } catch (Exception ex) {
             log.error("generateQRCode qrGateway error : " + ex.getMessage(), ex);
             throw CashBoxException.ohterException("generateQRCode qrGateway error : " + ex.getMessage(), "99999");
-        }
-
-        try {
-
-             cashBox = cashBoxRepository.save(cashBox);
-
-        } catch (Exception ex) {
-            log.error("addCastBox Repository error : " + ex.getMessage(), ex);
-            throw CashBoxException.ohterException("addCastBox Repository error : " + ex.getMessage(), "99999");
         }
 
         return cashBox;

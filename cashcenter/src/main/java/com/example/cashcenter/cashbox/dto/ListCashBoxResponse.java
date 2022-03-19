@@ -12,6 +12,9 @@ public class ListCashBoxResponse {
         return cashBoxResponseList;
     }
 
+    public ListCashBoxResponse() {
+    }
+
     public ListCashBoxResponse(List<CashBox> cashBoxes) {
         cashBoxResponseList = new ArrayList<CashBoxResponse>();
         for (var item : cashBoxes){

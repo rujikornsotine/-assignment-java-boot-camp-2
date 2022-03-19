@@ -15,6 +15,10 @@ public class ErrorAdviser {
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<ErrorResponse> HandlerBaseException(BaseException ex){
         ErrorResponse errorRespones = new ErrorResponse();
+
+        if(ex.errorcode == null || ex.errorcode.isEmpty()){
+            ex.errorcode = "9999";
+        }
         errorRespones.setErrorMessage(ex.getMessage());
         errorRespones.setErrorCode(ex.errorcode);
         errorRespones.setStatus(HttpStatus.OK.value());
