@@ -80,10 +80,7 @@ public class CashBoxController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/get/test")
-    public ResponseEntity<CashBoxRequest> test() {
-        return new ResponseEntity<>(new CashBoxRequest(), HttpStatus.OK);
-    }
+
 
 
 }

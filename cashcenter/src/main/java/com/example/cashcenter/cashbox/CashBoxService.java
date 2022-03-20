@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Service
 public class CashBoxService {
-    private static final Logger log = LoggerFactory.getLogger(LocationService.class);
+    private static final Logger log = LoggerFactory.getLogger(CashBoxService.class);
     @Autowired
     CashBoxRepository cashBoxRepository;
     @Autowired
